@@ -12,8 +12,27 @@ param(
 $ErrorActionPreference = 'Stop'
 $qaDir = $PSScriptRoot
 $root = Split-Path -Parent $qaDir
-$chrome = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
-$node = 'C:\Users\이종정\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe'
+
+# Chrome/Edge: 설치 경로 후보를 순서대로 확인
+$chrome = @(
+  'C:\Program Files\Google\Chrome\Application\chrome.exe',
+  'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
+  'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
+  'C:\Program Files\Microsoft\Edge\Application\msedge.exe'
+) | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+if (-not $chrome) {
+  Write-Host 'Chrome 또는 Edge를 찾지 못했습니다. 설치 후 다시 실행하세요.'
+  exit 4
+}
+
+# Node: NODE_EXE 환경변수 우선, 없으면 PATH에서 탐색 (사용자 경로 하드코딩 금지)
+$node = if ($env:NODE_EXE -and (Test-Path $env:NODE_EXE)) { $env:NODE_EXE } else { (Get-Command node -ErrorAction SilentlyContinue).Source }
+if (-not $node) {
+  Write-Host 'Node.js가 필요합니다. https://nodejs.org/ 에서 설치하거나 PATH에 추가하세요.'
+  exit 4
+}
+
 $profile = Join-Path $qaDir '.chrome-profile'
 
 $chromeArgs = @(
