@@ -84,6 +84,15 @@ Graph RAG 실습(`js/engine/rag-sim.js`)도 **시뮬레이션**입니다 — 임
 - 정적 호스팅 시 캐시 권장: `index.html` no-cache, `assets/vendor/*` 장기 캐시, 나머지 짧게.
 - 압축(gzip/brotli) 적용 시 전송량은 약 2.3MB → **730KB**입니다.
 
+### GitHub Pages
+
+`.github/workflows/pages.yml` 이 준비되어 있습니다. 저장소 **Settings → Pages → Source: GitHub Actions** 로 한 번만 지정하면,
+`main` 에 push 할 때마다 `index.html · assets · js` 만 추려 자동 배포됩니다(빌드 없음).
+
+- 주소: `https://<계정>.github.io/GraphRAG/`
+- ⚠️ **비공개 저장소의 Pages는 GitHub Pro 이상이 필요**하며, 배포된 사이트 자체는 기본적으로 **공개**입니다.
+  내용을 사내 한정으로 유지해야 한다면 Pages 대신 **사내 정적 호스팅**을 권장합니다.
+
 ## 검증
 
 ```bash

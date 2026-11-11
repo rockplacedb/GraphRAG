@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+# 저장소 Settings → Pages → Source 를 "GitHub Actions" 로 한 번만 지정하면
+# main 브랜치에 push 될 때마다 사이트가 자동 배포됩니다. (빌드 과정 없음)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 사이트 파일만 추출 (qa/tests/README 제외)
+        run: |
+          mkdir -p _site
+          cp -r index.html assets js _site/
+          touch _site/.nojekyll
+          echo "site files:"; find _site -type f | wc -l
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
