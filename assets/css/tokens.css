@@ -1,0 +1,156 @@
+/* =====================================================================
+   tokens.css — 디자인 토큰 (색·타입·간격·모션)
+   라이트가 기본, 다크는 [data-theme="dark"]. 그래프 캔버스는 항상 딥네이비.
+   ===================================================================== */
+
+:root {
+  /* --- 폰트: 웹폰트를 쓰지 않는다(오프라인 보장). Windows는 맑은 고딕으로 폴백. --- */
+  --font-sans: "Pretendard Variable", Pretendard, "Malgun Gothic", "Apple SD Gothic Neo",
+    system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "D2Coding", monospace;
+
+  --fs-2xs: 0.6875rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.3125rem;
+  --fs-2xl: 1.625rem;
+  --fs-3xl: 2.125rem;
+  --fs-4xl: 2.75rem;
+
+  --lh-tight: 1.28;
+  --lh-base: 1.68;
+  --lh-loose: 1.85;
+
+  /* --- 브랜드 --- */
+  --brand-500: #4f46e5;
+  --brand-600: #4338ca;
+  --brand-400: #818cf8;
+  --brand-50: #eef2ff;
+  --cyan-500: #06b6d4;
+  --cyan-400: #22d3ee;
+  --cyan-600: #0891b2;
+
+  /* --- 노드 라벨 팔레트(사이트 전역에서 동일하게 사용) --- */
+  --node-customer: #3b82f6;
+  --node-order: #f59e0b;
+  --node-product: #10b981;
+  --node-supplier: #a855f7;
+  --node-review: #ec4899;
+  --node-category: #64748b;
+  --node-return: #ef4444;
+  --node-doc: #14b8a6;
+  --node-class: #8b5cf6;
+  --node-default: #94a3b8;
+
+  /* --- 시맨틱 상태색 --- */
+  --ok-500: #16a34a;
+  --ok-50: #ecfdf5;
+  --warn-500: #d97706;
+  --warn-50: #fffbeb;
+  --danger-500: #dc2626;
+  --danger-50: #fef2f2;
+
+  /* --- 간격(4px 그리드) --- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+  --sp-9: 56px;
+  --sp-10: 72px;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --sidebar-w: 272px;
+  --toc-w: 216px;
+  --topbar-h: 56px;
+  --content-max: 1080px;
+
+  --z-topbar: 40;
+  --z-sidebar: 60;
+  --z-palette: 90;
+  --z-toast: 100;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 420ms;
+}
+
+/* ---------------- 라이트 ---------------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f6fa;
+  --bg-alt: #eceef5;
+  --surface: #ffffff;
+  --surface-2: #fafbfe;
+  --surface-3: #f2f4fa;
+  --border: #e3e6ef;
+  --border-strong: #ccd1e0;
+  --ink: #0f172a;
+  --ink-2: #334155;
+  --ink-3: #64748b;
+  --ink-4: #94a3b8;
+  --accent: var(--brand-500);
+  --accent-soft: var(--brand-50);
+  --accent-line: #c7d2fe;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px -12px rgba(15, 23, 42, 0.18);
+  --shadow-lg: 0 24px 60px -24px rgba(15, 23, 42, 0.3);
+  --code-bg: #0d1117;
+  --code-ink: #e6edf3;
+  --highlight: #fef9c3;
+}
+
+/* ---------------- 다크 ---------------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0f1a;
+  --bg-alt: #101625;
+  --surface: #131a2a;
+  --surface-2: #172033;
+  --surface-3: #1d2740;
+  --border: #26314a;
+  --border-strong: #364364;
+  --ink: #eef2fb;
+  --ink-2: #c6d0e2;
+  --ink-3: #93a0ba;
+  --ink-4: #6b7897;
+  --accent: var(--brand-400);
+  --accent-soft: rgba(129, 140, 248, 0.14);
+  --accent-line: #3b468f;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.45), 0 10px 30px -14px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 30px 70px -28px rgba(0, 0, 0, 0.85);
+  --code-bg: #0a0f19;
+  --code-ink: #e6edf3;
+  --highlight: #4d3f0d;
+}
+
+/* 그래프 캔버스는 테마와 무관하게 딥네이비 고정 */
+:root {
+  --graph-bg: #0b1220;
+  --graph-bg-2: #101a30;
+  --graph-border: #1e2a44;
+  --graph-ink: #dbe4f5;
+  --graph-ink-dim: #8796b3;
+  --graph-grid: rgba(148, 163, 184, 0.09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}

@@ -1,0 +1,10 @@
+# QA 산출물 및 로컬 브라우저 프로필
+qa/shots/
+qa/report.json
+qa/.chrome-profile/
+.qa-chrome/
+
+# 로컬 서버/도구 캐시
+node_modules/
+.DS_Store
+Thumbs.db

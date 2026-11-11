@@ -1,0 +1,5 @@
+# 줄바꿈/인코딩을 OS와 무관하게 고정
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary

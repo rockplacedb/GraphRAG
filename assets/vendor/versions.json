@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-11T04:54:47.105Z",
+  "note": "이 디렉터리는 scripts/vendor.mjs 가 생성합니다. 사이트는 이 파일들만으로 오프라인 동작합니다.",
+  "libraries": [
+    {
+      "name": "vis-network",
+      "version": "10.1.5",
+      "file": "vis-network.min.js",
+      "bytes": 653713,
+      "sha256_16": "b427322ad953d70a",
+      "license": null,
+      "npm": "https://www.npmjs.com/package/vis-network/v/10.1.5"
+    },
+    {
+      "name": "echarts",
+      "version": "6.1.0",
+      "file": "echarts.min.js",
+      "bytes": 1121883,
+      "sha256_16": "b66b25aeb4df84e3",
+      "license": "echarts.LICENSE.txt",
+      "npm": "https://www.npmjs.com/package/echarts/v/6.1.0"
+    }
+  ]
+}

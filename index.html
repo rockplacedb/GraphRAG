@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>지식 그래프 · Graph RAG 학습 대시보드 — DB 엔지니어를 위한</title>
+<meta name="description" content="DB 엔지니어를 위한 지식 그래프, 그래프 데이터베이스, 온톨로지, Graph RAG 이론과 실습 대시보드. 브라우저에서 바로 실행하는 Cypher 실습 포함." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F46E5'/%3E%3Cpath d='M10 11l12 10M10 11h12M10 21h12' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='9' cy='10' r='2.6' fill='%2306B6D4'/%3E%3Ccircle cx='23' cy='22' r='2.6' fill='%23F59E0B'/%3E%3Ccircle cx='23' cy='10' r='2.6' fill='%23fff'/%3E%3Ccircle cx='15' cy='21' r='2.6' fill='%2310B981'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="assets/css/tokens.css" />
+<link rel="stylesheet" href="assets/css/base.css" />
+<link rel="stylesheet" href="assets/css/layout.css" />
+<link rel="stylesheet" href="assets/css/components.css" />
+<link rel="stylesheet" href="assets/css/labs.css" />
+</head>
+<body>
+<a class="skip-link" href="#view">본문으로 건너뛰기</a>
+
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar" aria-label="학습 목차"></aside>
+
+  <div class="app__main">
+    <header class="topbar">
+      <button class="icon-btn topbar__burger" id="navToggle" aria-label="목차 열기" aria-expanded="false">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <nav class="crumbs" id="crumbs" aria-label="현재 위치"></nav>
+      <div class="topbar__spacer"></div>
+      <button class="btn btn--ghost topbar__search" id="paletteBtn" aria-label="챕터 검색">
+        <span aria-hidden="true">⌕</span><span class="topbar__search-text">챕터 검색</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="테마 전환" title="테마 전환">
+        <span class="icon-sun" aria-hidden="true">☀</span><span class="icon-moon" aria-hidden="true">☾</span>
+      </button>
+    </header>
+    <div class="reading" aria-hidden="true"><i id="readingBar"></i></div>
+
+    <main class="view" id="view" tabindex="-1">
+      <div class="boot" id="boot">
+        <div class="boot__spinner" aria-hidden="true"></div>
+        <p>학습 대시보드를 준비하는 중…</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>
+        <strong>모두몰 modumall</strong> 시나리오 기반 학습 자료 ·
+        Neo4j 5.x / Cypher 기준 · 브라우저 실습은 내장 엔진 시뮬레이션입니다.
+      </p>
+      <p class="footer__meta">
+        시각화: <span>vis-network 10</span> · <span>Apache ECharts 6</span> · 외부 CDN 미사용(오프라인 동작)
+      </p>
+    </footer>
+  </div>
+</div>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette__scrim" data-close></div>
+  <div class="palette__panel" role="dialog" aria-modal="true" aria-label="챕터 검색">
+    <div class="palette__input-wrap">
+      <span aria-hidden="true">⌕</span>
+      <input id="paletteInput" type="search" placeholder="챕터·키워드 검색 (예: 슈퍼노드, 가변 길이, SHACL)" autocomplete="off" spellcheck="false" />
+      <kbd>ESC</kbd>
+    </div>
+    <ul class="palette__list" id="paletteList"></ul>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<noscript><p class="noscript">이 대시보드는 JavaScript가 필요합니다.</p></noscript>
+
+<!-- 그래프 캔버스: 전역 vis (오프라인 번들) -->
+<script defer src="assets/vendor/vis-network.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
